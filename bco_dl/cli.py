@@ -60,7 +60,7 @@ def get_dataset(c_ftp, remote_path, in_memory=False):
         if not p.exists():
             p.parent.mkdir(parents=True, exist_ok=True)
             c_ftp.get(p, p)
-        return xr.open_dataset(p.name, chunks=dict(time=10))
+        return xr.open_dataset(p, chunks=dict(time=10))
 
 
 def get_datasets_in_time_range(c_ftp, product, t_start, t_end, in_memory=False,

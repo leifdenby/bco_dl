@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='bco_dl',
-    version='0.1.0',
+    version='0.1.1',
     author='Leif Denby',
     author_email='l.c.denby@leeds.ac.uk',
     description='Simple download interface for Barbados Cloud Observatory',
