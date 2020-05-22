@@ -20,6 +20,10 @@ def radar(band='Ka', freq='2s'):
             "".format(band=band, freq=freq))
 
 
+def meteorology():
+    return ("I_Meteorology_2m/%Y%m/"
+            "Meteorology__Deebles_Point__2m_10s__%Y%m%d.nc")
+
 def get_remote_path_format(product, **kwargs):
     if not product in globals():
         raise NotImplementedError('Please add a remote path definition to '
