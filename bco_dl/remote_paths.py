@@ -5,9 +5,14 @@ Definitions of paths for BCO datasets
 def cloudbase():
     return "A_Cloud_base_heights/CEILO__*__%Y%m.nc"
 
-def vertical_velocity(version='1.01'):
-    return ("L_Vertical_velocity/Version{version}/"
-            "WindLidar__Deebles_Point*__%Y%m%d.nc*".format(version=version))
+def vertical_velocity(instrument="WBAND_LIDAR"):
+    """
+    available instruments: TESTBAND_LIDAR (until 10/2019)
+                           WBAND_LIDAR (from 02/2019)
+    """
+    return ("L_Vertical_velocity/{instrument}/%Y%m/"
+            "WindLidar__Deebles_Point*__%Y%m%d.nc*"
+            "".format(instrument=instrument))
 
 def radar(band='Ka', freq='2s'):
     return ("B_Reflectivity/{band}-Band/{freq}/%Y%m/"
