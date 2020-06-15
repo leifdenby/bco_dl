@@ -20,6 +20,19 @@ def radar(band='Ka', freq='2s'):
             "".format(band=band, freq=freq))
 
 
+def lidar(instrument='CORAL', resolution='high'):
+    """
+    Instruments currently on BCO ftp: CORAL, EARLI, LICHT
+    """
+    if instrument == "CORAL":
+        subpath = "nc/{resolution}Resolution".format(resolution)
+    else:
+        subpath = "nc"
+
+    return ("R_RamanLidar-{instrument}/3_QuickLook/{subpath}/ql%y%m/"
+            "jl%y%m%d0000.*".format(instrument=instrument, subpath=subpath))
+
+
 def meteorology():
     return ("I_Meteorology_2m/%Y%m/"
             "Meteorology__Deebles_Point__2m_10s__%Y%m%d.nc")

@@ -64,7 +64,7 @@ def get_dataset(c_ftp, remote_path, in_memory=False):
 
 
 def get_datasets_in_time_range(c_ftp, product, t_start, t_end, in_memory=False,
-                               product_kws={}):
+                               product_kws={}, debug=False):
     """
     Using `c_ftp` ftpretty client instance download all datasets available for
     `product` between `t_start` and `t_end`. Extra keyword args (version, band
@@ -73,12 +73,16 @@ def get_datasets_in_time_range(c_ftp, product, t_start, t_end, in_memory=False,
     product_path_format = get_remote_path_format(product, **product_kws)
     remote_paths = []
     for qr in gen_queries(product_path_format, t_start, t_end):
+        if debug:
+            print("query", qr)
         try:
             remote_paths += c_ftp.list(qr)
         except:
             pass
     ds_ = []
     for remote_path in remote_paths:
+        if debug:
+            print("download", remote_path)
         ds = get_dataset(c_ftp, remote_path, in_memory=in_memory)
         ds_.append(ds)
     if len(ds_) > 0:
