@@ -1,2 +1,2 @@
-from .cli import get_datasets_in_time_range, HOSTNAME
-from .utils import clip_datasets
+from .cli import HOSTNAME, get_datasets_in_time_range  # noqa
+from .utils import clip_datasets  # noqa

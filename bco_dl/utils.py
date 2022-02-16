@@ -1,5 +1,4 @@
-
-def clip_datasets(dss, dim='time'):
+def clip_datasets(dss, dim="time"):
     vmin, vmax = None, None
     for ds in dss:
         if vmin is None or ds[dim].min() > vmin:
